@@ -5,6 +5,9 @@ The `UITableViewCell+Lifecycle` category (with `MDTableViewDelegate`) provide li
 * cellDidLayoutSubviews
 * cellDidDisappear
 
+![Debug log](https://github.com/madongchunqiu/UITableViewCell-Lifecycle/blob/master/UITableViewCell-Lifecycle.gif)  
+
+
 # Why
 I'm a big fan of **UITableView**, since it provides the flexibility of organizing contents dynamically. And with more and more animations in the UI, I found it hard to locate my code elegantly.  
 On the other hand, UIViewController is nice with viewWillAppear, viewDidAppear, viewDidLayoutSubviews, viewWillDisappear and viewDidDisappear etc.   
