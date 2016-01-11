@@ -83,6 +83,7 @@
 		D704FF8C1C427E8D00C374B1 /* TableViewCellLifecycle */ = {
 			isa = PBXGroup;
 			children = (
+				D704FFE11C42B90900C374B1 /* Source */,
 				D704FFEE1C42B91400C374B1 /* AppDelegate.h */,
 				D704FFEF1C42B91400C374B1 /* AppDelegate.m */,
 				D704FFFA1C42B91400C374B1 /* Sample1LighterViewController.h */,
@@ -98,7 +99,6 @@
 				D704FFF01C42B91400C374B1 /* Assets.xcassets */,
 				D704000D1C42B93F00C374B1 /* Main.storyboard */,
 				D704000F1C42B93F00C374B1 /* LaunchScreen.storyboard */,
-				D704FFE11C42B90900C374B1 /* Source */,
 				D704FF8D1C427E8D00C374B1 /* Supporting Files */,
 			);
 			path = TableViewCellLifecycle;
@@ -116,14 +116,14 @@
 		D704FFE11C42B90900C374B1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D704FFE21C42B90900C374B1 /* MDRuntimeHelper.h */,
-				D704FFE31C42B90900C374B1 /* MDRuntimeHelper.m */,
-				D704FFE41C42B90900C374B1 /* MDTableViewDelegate.h */,
-				D704FFE51C42B90900C374B1 /* MDTableViewDelegate.m */,
 				D704FFE61C42B90900C374B1 /* UITableViewCell+Lifecycle.h */,
 				D704FFE71C42B90900C374B1 /* UITableViewCell+Lifecycle.m */,
+				D704FFE41C42B90900C374B1 /* MDTableViewDelegate.h */,
+				D704FFE51C42B90900C374B1 /* MDTableViewDelegate.m */,
 				D704FFE81C42B90900C374B1 /* UITableViewController+CellLifecycle.h */,
 				D704FFE91C42B90900C374B1 /* UITableViewController+CellLifecycle.m */,
+				D704FFE21C42B90900C374B1 /* MDRuntimeHelper.h */,
+				D704FFE31C42B90900C374B1 /* MDRuntimeHelper.m */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
@@ -356,6 +356,7 @@
 				D704FFA31C427E8D00C374B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

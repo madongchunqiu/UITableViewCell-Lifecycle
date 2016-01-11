@@ -10,6 +10,9 @@
 
 @interface Sample1Cell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *animatingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintViewWidth;
+
+- (void)updateWithIndexPath:(NSIndexPath*)indexPath;
 
 @end

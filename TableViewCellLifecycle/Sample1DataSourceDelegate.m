@@ -18,15 +18,17 @@ static NSString* const cellIdentifier = @"Sample1Cell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UIScreen mainScreen].bounds.size.height;
+    return [UIScreen mainScreen].bounds.size.height / 2.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    Sample1Cell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    [cell updateWithIndexPath:indexPath];
+    return cell;
 }
 
 @end

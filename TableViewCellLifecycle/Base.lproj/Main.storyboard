@@ -46,6 +46,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="animatingView" destination="WB8-a3-UH9" id="fny-UP-5uh"/>
                                             <outlet property="constraintViewWidth" destination="H9g-Jd-rh8" id="XnL-RP-GIG"/>
                                             <segue destination="3t4-dZ-COd" kind="show" id="MxY-9v-PpY"/>
                                         </connections>

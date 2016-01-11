@@ -143,6 +143,10 @@ static NSString* const selectorNameDidEndDisplayCell = @"j6x8bUx2gnh9st_tableVie
 }
 
 + (void)_swizzleProtocolMethodsInClassTree {
+#ifdef DEBUG
+    clock_t start = clock();
+#endif
+    
     // Get the class list
     Class *classes = NULL;
     int numClasses = objc_getClassList(NULL, 0);
@@ -162,14 +166,10 @@ static NSString* const selectorNameDidEndDisplayCell = @"j6x8bUx2gnh9st_tableVie
         Class class = classes[i];
         
         BOOL isClassToSwizzle = NO;
-        BOOL isNSClass = [MDRuntimeHelper isSubclass:class ofClass:NSObject.class];
         
         // -------------------------------
         // 1. Check, if it is a subclass of MDTableViewDelegate, and implements UITableViewDelegate
-        // NOTE: class_conformsToProtocol only applies to the class itself, not its superclass (this is unlike NSObject's conformsToProtocol)
-        if (isNSClass &&
-            //class_conformsToProtocol(class, @protocol(UITableViewDelegate)) &&
-            [class isSubclassOfClass:MDTableViewDelegate.class] &&
+        if ([MDRuntimeHelper isSubclass:class ofClass:MDTableViewDelegate.class] &&
             class != MDTableViewDelegate.class) {
             isClassToSwizzle = YES;
         }
@@ -177,10 +177,10 @@ static NSString* const selectorNameDidEndDisplayCell = @"j6x8bUx2gnh9st_tableVie
         // -------------------------------
         // 2. Check, if it is a subclass of UITableViewController and implemented UITableViewDelegate
         // NOTE: class_conformsToProtocol only applies to the class itself, not its superclass (this is unlike NSObject's conformsToProtocol)
-        if (isNSClass &&
-            isUITableViewControllerCategoryUsed &&
+        if (!isClassToSwizzle && // for performance!
+            isUITableViewControllerCategoryUsed && // since it is not a recommended option to use UITableViewController's category
+            [MDRuntimeHelper isSubclass:class ofClass:UITableViewController.class] &&
             class_conformsToProtocol(class, @protocol(UITableViewDelegate)) &&
-            [class isSubclassOfClass:UITableViewController.class] &&
             class != UITableViewController.class) {
             
             Class superClass = class_getSuperclass(class);
@@ -198,12 +198,22 @@ static NSString* const selectorNameDidEndDisplayCell = @"j6x8bUx2gnh9st_tableVie
         }
 
         if (isClassToSwizzle) {
+#ifdef DEBUG
             NSLog(@" === class with tableviewcell lifecycle => %s", class_getName(class));
+#endif
             [UITableViewCell _swizzleCellLifecycleMethodsForClass:class];
         }
     }
     
     free(classes);
+
+#ifdef DEBUG
+    double executionTime = (double)(clock()-start) / CLOCKS_PER_SEC;
+    NSLog(@"class iteration for cell lifecycle injection excution length = %f s", executionTime);
+    // LOG
+    // 0.2s (10 tries) - check desendent of NSObject
+    // 0.035s (10 tries) - check desendent of MDTableViewDelegate only
+#endif
 }
 
 + (void)_swizzleCellLifecycleMethodsForClass:(Class)class {
