@@ -245,12 +245,9 @@ void _willDisplayCell_h7Gio8Gos2W(id self, SEL cmd, UITableView *tableView, UITa
     void (*objc_msgSendTyped)(id, SEL, UITableView*, UITableViewCell*, NSIndexPath*) = (void*)objc_msgSend;
     objc_msgSendTyped(self, NSSelectorFromString(selectorNameWillDisplayCell), tableView, cell, indexPath);
     
-    if ([cell isKindOfClass:UITableViewCell.class]) {
-        UITableViewCell* baseCell = (UITableViewCell*)cell;
-        [baseCell cellWillAppear];
-        baseCell.isCellWillAppeared = YES;
-        baseCell.isCellWillOnScreen = YES;
-    }
+    [cell cellWillAppear];
+    cell.isCellWillAppeared = YES;
+    cell.isCellWillOnScreen = YES;
 }
 
 void _didEndDisplayCell_i5jnG0a2Nad(id self, SEL cmd, UITableView *tableView, UITableViewCell *cell, NSIndexPath *indexPath) {
@@ -258,12 +255,8 @@ void _didEndDisplayCell_i5jnG0a2Nad(id self, SEL cmd, UITableView *tableView, UI
     void (*objc_msgSendTyped)(id, SEL, UITableView*, UITableViewCell*, NSIndexPath*) = (void*)objc_msgSend;
     objc_msgSendTyped(self, NSSelectorFromString(selectorNameDidEndDisplayCell), tableView, cell, indexPath);
     
-    if ([cell isKindOfClass:UITableViewCell.class]) {
-        UITableViewCell* baseCell = (UITableViewCell*)cell;
-        [baseCell cellDidDisappear];
-        baseCell.isCellDidOnScreen = NO;
-    }
-    
+    [cell cellDidDisappear];
+    cell.isCellDidOnScreen = NO;
 }
 
 @end
