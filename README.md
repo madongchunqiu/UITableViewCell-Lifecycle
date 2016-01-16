@@ -26,6 +26,7 @@ I though I shall make this happen to *UITableViewCell*.
 ```
 The difference between Swift version and Objective-C version is:   
 the Swift version swizzle method `tableView:willDisplayCell:forRowAtIndexPath:` directly in `MDTableViewDelegate`, not its subclass.
+By doing this, the tranverse of all the classes to find classes that need method swizzling is not necessary.
 ```
 
 # Known Issues
