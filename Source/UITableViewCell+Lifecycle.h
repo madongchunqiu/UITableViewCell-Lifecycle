@@ -17,9 +17,9 @@
 
 @interface UITableViewCell (Lifecycle)
 
-@property (nonatomic) BOOL isCellWillAppeared; /*< YES, if the cell ever triggered cellWillAppear */
-@property (nonatomic) BOOL isCellDidAppeared; /*< YES, if the cell ever triggered cellDidAppear */
-@property (nonatomic) BOOL isCellDidLayoutSubviews; /*< YES, if the cell ever triggered cellDidLayoutSubviews */
+@property (nonatomic) BOOL isCellWillAppearFired; /*< YES, if the cell ever triggered cellWillAppear */
+@property (nonatomic) BOOL isCellDidAppearFired; /*< YES, if the cell ever triggered cellDidAppear */
+@property (nonatomic) BOOL isCellDidLayoutSubviewsFired; /*< YES, if the cell ever triggered cellDidLayoutSubviews */
 
 - (void)cellWillAppear;
 - (void)cellDidAppear; /*< if custom cell overrides layoutSubviews, be sure to call [super layoutSubviews] */

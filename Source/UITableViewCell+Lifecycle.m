@@ -62,39 +62,39 @@ static NSString* const selectorNameDidEndDisplayCell = @"j6x8bUx2gnh9st_tableVie
 
 @implementation UITableViewCell (Lifecycle)
 
-- (BOOL)isCellWillAppeared {
+- (BOOL)isCellWillAppearFired {
     NSNumber *result = objc_getAssociatedObject(self, &keyPropertyCellWillAppeared);
     if (!result) {
-        self.isCellWillAppeared = NO;
+        self.isCellWillAppearFired = NO;
         return NO;
     }
     return result.boolValue;
 }
-- (void)setIsCellWillAppeared:(BOOL)flag {
+- (void)setIsCellWillAppearFired:(BOOL)flag {
     objc_setAssociatedObject(self, &keyPropertyCellWillAppeared, @(flag), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)isCellDidAppeared {
+- (BOOL)isCellDidAppearFired {
     NSNumber *result = objc_getAssociatedObject(self, &keyPropertyCellDidAppeared);
     if (!result) {
-        self.isCellDidAppeared = NO;
+        self.isCellDidAppearFired = NO;
         return NO;
     }
     return result.boolValue;
 }
-- (void)setIsCellDidAppeared:(BOOL)flag {
+- (void)setIsCellDidAppearFired:(BOOL)flag {
     objc_setAssociatedObject(self, &keyPropertyCellDidAppeared, @(flag), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)isCellDidLayoutSubviews {
+- (BOOL)isCellDidLayoutSubviewsFired {
     NSNumber *result = objc_getAssociatedObject(self, &keyPropertyCellDidLayoutSubviews);
     if (!result) {
-        self.isCellDidLayoutSubviews = NO;
+        self.isCellDidLayoutSubviewsFired = NO;
         return NO;
     }
     return result.boolValue;
 }
-- (void)setIsCellDidLayoutSubviews:(BOOL)flag {
+- (void)setIsCellDidLayoutSubviewsFired:(BOOL)flag {
     objc_setAssociatedObject(self, &keyPropertyCellDidLayoutSubviews, @(flag), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -134,11 +134,11 @@ static NSString* const selectorNameDidEndDisplayCell = @"j6x8bUx2gnh9st_tableVie
             self.isCellWillOnScreen = NO;
             [self cellDidAppear]; // call action - 1
             self.isCellDidOnScreen = YES;
-            self.isCellDidAppeared = YES; // set flag afterwards - 1
+            self.isCellDidAppearFired = YES; // set flag afterwards - 1
         }
         
         [self cellDidLayoutSubviews]; // call action - 2
-        self.isCellDidLayoutSubviews = YES; // set flag afterwards - 2
+        self.isCellDidLayoutSubviewsFired = YES; // set flag afterwards - 2
     }
 }
 
@@ -246,7 +246,7 @@ void _willDisplayCell_h7Gio8Gos2W(id self, SEL cmd, UITableView *tableView, UITa
     objc_msgSendTyped(self, NSSelectorFromString(selectorNameWillDisplayCell), tableView, cell, indexPath);
     
     [cell cellWillAppear];
-    cell.isCellWillAppeared = YES;
+    cell.isCellWillAppearFired = YES;
     cell.isCellWillOnScreen = YES;
 }
 
