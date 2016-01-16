@@ -23,6 +23,9 @@ I though I shall make this happen to *UITableViewCell*.
 
 # Swift Verion
 [UITableViewCell-Lifecycle-Swift](https://github.com/madongchunqiu/UITableViewCell-Lifecycle-Swift)
+```
+The difference between Swift version and Objective-C version is: the Swift version swizzle method `tableView:willDisplayCell:forRowAtIndexPath:` directly in `MDTableViewDelegate`, not its subclass.
+```
 
 # Known Issues
 These events won't be triggerred if the whole tableView is going on-screen or off-screen, e.g. when pushing another view controller or poped back from another view controller. (Currently I don't see the need to fix this.)  
