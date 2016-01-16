@@ -24,7 +24,8 @@ I though I shall make this happen to *UITableViewCell*.
 # Swift Verion
 [UITableViewCell-Lifecycle-Swift](https://github.com/madongchunqiu/UITableViewCell-Lifecycle-Swift)
 ```
-The difference between Swift version and Objective-C version is: the Swift version swizzle method `tableView:willDisplayCell:forRowAtIndexPath:` directly in `MDTableViewDelegate`, not its subclass.
+The difference between Swift version and Objective-C version is:   
+the Swift version swizzle method `tableView:willDisplayCell:forRowAtIndexPath:` directly in `MDTableViewDelegate`, not its subclass.
 ```
 
 # Known Issues
