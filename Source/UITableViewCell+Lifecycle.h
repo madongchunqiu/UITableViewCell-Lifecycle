@@ -17,13 +17,17 @@
 
 @interface UITableViewCell (Lifecycle)
 
-@property (nonatomic) BOOL isCellWillAppearFired; /*< YES, if the cell ever triggered cellWillAppear */
-@property (nonatomic) BOOL isCellDidAppearFired; /*< YES, if the cell ever triggered cellDidAppear */
-@property (nonatomic) BOOL isCellDidLayoutSubviewsFired; /*< YES, if the cell ever triggered cellDidLayoutSubviews */
+@property (nonatomic) BOOL isCellWillAppearFired; //!< YES, if the cell ever triggered cellWillAppear 
+@property (nonatomic) BOOL isCellDidAppearFired; //!< YES, if the cell ever triggered cellDidAppear 
+@property (nonatomic) BOOL isCellDidLayoutSubviewsFired; //!< YES, if the cell ever triggered cellDidLayoutSubviews 
 
 - (void)cellWillAppear;
-- (void)cellDidAppear; /*< if custom cell overrides layoutSubviews, be sure to call [super layoutSubviews] */
-- (void)cellDidLayoutSubviews; /*< layoutSubviews may be called in dequeReusableCell, this is made as a replacement for layoutSubviews of a cell */
+
+/// if custom cell overrides layoutSubviews, be sure to call [super layoutSubviews]
+- (void)cellDidAppear;
+/// layoutSubviews may be called in dequeReusableCell, this is made as a replacement for layoutSubviews of a cell
+- (void)cellDidLayoutSubviews;
+
 - (void)cellDidDisappear;
 
 @end
